@@ -1,19 +1,28 @@
-'use client'
+"use client";
 import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react"; // Icons for better UI
 
 export default function ThemeToggle() {
-    const [theme, setTheme] = useState(
-        localStorage.getItem("theme") || "light"
-    );
+    const [theme, setTheme] = useState("light"); // Default theme
 
     useEffect(() => {
-        document.documentElement.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
+        // Ensure localStorage is accessed only on the client
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+            setTheme(savedTheme);
+            document.documentElement.setAttribute("data-theme", savedTheme);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (theme) {
+            document.documentElement.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+        }
     }, [theme]);
 
     const toggleTheme = () => {
-        setTheme(theme === "light" ? "dark" : "light");
+        setTheme(prevTheme => (prevTheme === "light" ? "dark" : "light"));
     };
 
     return (
