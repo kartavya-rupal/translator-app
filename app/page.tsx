@@ -117,7 +117,7 @@ export default function Home() {
         </div>
 
         {/* Output Section */}
-        <div className="mt-6 p-4 bg-base-300 rounded-lg text-center flex justify-between items-center">
+        <div className="mt-6 p-4 bg-base-300 rounded-lg text-center relative">
           <p className="text-gray-700 dark:text-gray-300 ">
             {loading
               ? "Translating..."
@@ -125,7 +125,7 @@ export default function Home() {
                 ? translatedText
                 : "Your translation will appear here."}
           </p>
-          <button className="hover:text-gray-500 transition-all" onClick={handleCopy}>
+          <button className="hover:text-gray-500 transition-all absolute top-5 right-3" onClick={handleCopy}>
             <Clipboard size={19} />
           </button>
         </div>
