@@ -118,7 +118,7 @@ export default function Home() {
 
         {/* Output Section */}
         <div className="mt-6 p-4 bg-base-300 rounded-lg text-center relative">
-          <p className="text-gray-700 dark:text-gray-300 ">
+          <p className="text-gray-500 dark:text-gray-500">
             {loading
               ? "Translating..."
               : translatedText
